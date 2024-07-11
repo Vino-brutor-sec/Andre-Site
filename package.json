@@ -31,6 +31,6 @@
   "license": "ISC",
   "description": "",
   "engines": {
-    "node": "20.4.0"
+    "node": "20.11.1"
   }
 }
