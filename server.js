@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Conexão com o MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/bancoDeDados', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/bancoDeDados', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
