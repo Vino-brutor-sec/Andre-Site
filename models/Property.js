@@ -1,0 +1,1 @@
+const mongoose=require("mongoose"),ImovelSchema=new mongoose.Schema({titulo:String,descricao:String,endereco:String,bairro:String,tipo:String,valor:Number,imagens:[String]}),Imovel=mongoose.model("Imovel",ImovelSchema);module.exports=Imovel;

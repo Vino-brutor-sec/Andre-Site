@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./node_modules/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="shortcut icon" href="img/icon_8373fb97c28c497d859fb01ab5655d84.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>André Guimarães - Home</title>
+  </head>
+  <body>
+    <!--Navbar aqui-->
+    <nav class="container-fluid navbar navbar-expand-sm">
+      <a class="navbar-brand ps-5" href="#"><img class="logo-nav" src="img/AndreGuimaraesLogo Atualizada.png" alt="Logo"></a>
+      <button class="navbar-toggler d-lg-none me-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+          aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse px-5" id="collapsibleNavId">
+        <ul class="navbar-nav mr-auto ms-auto mt-2 mt-lg-0">
+          <li class="nav-item active px-2">
+            <a class="nav-link" href="#">HOME</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="Sobre.html">SOBRE</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="contato.html">CONTATO</a>
+          </li>
+          <!-- <li class="nav-item px-2">
+            <a class="nav-link" href="admin.html">ADMIN</a>
+          </li> -->
+        </ul>
+      </div>
+    </nav>
+    <div class="container div-main" data-aos="fade-up">
+      <div class="titleMain-div">
+        <h2>André Guimarães</h2>
+        <h1>Imóveis para realizar seu <span class="sonhoText">sonho</span></h1>
+        <a href="#btnSearch"><button class="btn btn-secondary customBtn mt-4">Ver opções</button></a>
+      </div>
+      <div class="casinha-div">
+        <img class="casinhaCustom" src="img/House searching-cuate.png" alt="home-icon">
+      </div>
+    </div>
+    <div class="container mt-4">
+      <h2>Pesquisar Imóveis</h2>
+      <form id="search-form" class="mb-5">
+          <div class="row">
+              <div class="col-md-3">
+                  <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro">
+              </div>
+              <div class="col-md-3 my-1">
+                  <select class="form-control" id="tipo" name="tipo">
+                      <option value="">Tipo</option>
+                      <option value="Casa">Casa</option>
+                      <option value="Apartamento">Apartamento</option>
+                  </select>
+              </div>
+              <div class="col-md-3">
+                  <input type="number" class="form-control my-1" id="valor-min" name="valorMin" placeholder="Valor Mínimo">
+              </div>
+              <div class="col-md-3">
+                  <input type="number" class="form-control my-1" id="valor-max" name="valorMax" placeholder="Valor Máximo">
+              </div>
+          </div>
+          <div class="row mt-3">
+              <div class="col-md-12">
+                  <button id="btnSearch" type="submit" class="btn btn-secondary customBtn">Pesquisar</button>
+              </div>
+          </div>
+      </form>
+    </div>
+
+    <div class="container mt-3" data-aos="fade-up">
+      <div id="properties" class="row"></div>
+    </div>
+  
+    <footer class="container-fluid">
+      <a class="navbar-brand ps-5" href="index.html"><img class="logo-foot" src="img/AndreGuimaraesLogo Atualizada.png" alt="Logo"></a>
+      <div>
+        <a class="link-footer" href="contato.html">Se interessou por algum imovél? Entre em contato!</a>
+        <ul>
+          <li><h6>Celular André: (51) 99972-5564 <i class="bi bi-phone icon-footer"></i></h6></li>
+          <li><h6>Celular Marjore: (51) 99260-7000<i class="bi bi-telephone icon-footer"></i></h6></li>
+          <li><h6>Email: andreguimaraesimovel@terra.com.br <i class="bi bi-envelope-at icon-footer"></i><h6></li>
+          <li><h6>Endereço: Rua coronel Massot - 1064 LOJA</h6></li>
+        </ul>
+      </div>
+    </footer>
+    <div class="whatsapp-button">
+      <a href="https://wa.me/5551992607000" target="_blank">
+        <i class="bi bi-whatsapp"></i>
+      </a>
+    </div>
+    
+    <script src="node_modules/swiper/swiper-bundle.min.js"></script>
+    <script type="module" src="JS/main.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      AOS.init(),document.addEventListener("DOMContentLoaded",async()=>{try{let e=await fetch("/api/properties"),i=await e.json(),t=document.getElementById("properties");i.forEach(e=>{let i=document.createElement("div");i.className="col-md-4 mb-4",i.innerHTML=`
+        <div class="card card-custom-imvovel">
+          <div class="swiper-container" id="swiper-${e._id}">
+            <div class="swiper-wrapper">
+              ${e.imagens.map((e,i)=>`
+                <div class="swiper-slide">
+                  <img src="${e}" class="d-block w-100" alt="...">
+                </div>
+              `).join("")}
+            </div>
+            <div class="swiper-button-next swiper-button-white"></div>
+            <div class="swiper-button-prev swiper-button-white"></div>
+            <div class="swiper-pagination swiper-pagination-white"></div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title mt-2">${e.titulo}</h5>
+              <p class="card-text">${e.descricao}</p>
+                <p class="card-text"><strong>${e.endereco} - ${e.bairro}</strong></p>
+              <p class="card-text"><strong>R$ ${e.valor}</strong></p>
+            </div>
+          </div>
+        `,t.appendChild(i),new Swiper(`#swiper-${e._id}`,{loop:!0,effect:"fade",fadeEffect:{crossFade:!0},navigation:{nextEl:`#swiper-${e._id} .swiper-button-next`,prevEl:`#swiper-${e._id} .swiper-button-prev`},pagination:{el:`#swiper-${e._id} .swiper-pagination`,clickable:!0},slidesPerView:1,spaceBetween:0})})}catch(s){console.error("Erro ao carregar im\xf3veis:",s)}}),document.getElementById("search-form").addEventListener("submit",async function(e){e.preventDefault();let i=document.getElementById("bairro").value,t=document.getElementById("tipo").value,s=document.getElementById("valor-min").value,a=document.getElementById("valor-max").value,r=new URLSearchParams({bairro:i,tipo:t,valorMin:s,valorMax:a}).toString(),d=await fetch(`/api/imoveis/?${r}`),n=await d.json(),p=document.getElementById("properties");p.innerHTML="",n.forEach(e=>{let i=document.createElement("div");i.className="col-md-4 mb-4",i.innerHTML=`
+        <div class="card card-custom-imvovel">
+          <div class="swiper-container" id="swiper-${e._id}">
+            <div class="swiper-wrapper">
+              ${e.imagens.map((e,i)=>`
+                <div class="swiper-slide">
+                  <img src="${e}" class="d-block w-100" alt="...">
+                </div>
+              `).join("")}
+            </div>
+            <div class="swiper-button-next swiper-button-white"></div>
+            <div class="swiper-button-prev swiper-button-white"></div>
+            <div class="swiper-pagination swiper-pagination-white"></div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title mt-2">${e.titulo}</h5>
+              <p class="card-text">${e.descricao}</p>
+                <p class="card-text"><strong>${e.endereco} - ${e.bairro}</strong></p>
+              <p class="card-text"><strong>R$ ${e.valor}</strong></p>
+            </div>
+          </div>
+        `,p.appendChild(i),new Swiper(`#swiper-${e._id}`,{loop:!0,effect:"fade",fadeEffect:{crossFade:!0},navigation:{nextEl:`#swiper-${e._id} .swiper-button-next`,prevEl:`#swiper-${e._id} .swiper-button-prev`},pagination:{el:`#swiper-${e._id} .swiper-pagination`,clickable:!0},slidesPerView:1,spaceBetween:0})})});
+    </script>
+  </body>
+</html>
