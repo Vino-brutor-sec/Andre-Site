@@ -25,7 +25,7 @@
     "sass": "^1.77.4",
     "swiper": "^11.1.4"
   },
-  "main": "index.js",
+  "main": "server.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
