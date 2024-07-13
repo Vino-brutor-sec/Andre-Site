@@ -47,6 +47,13 @@ app.get('/contato', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'contato.html'));
 });
 
+// Servindo arquivos estáticos
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/node_modules/bootstrap', express.static(path.join(__dirname, 'node_modules/bootstrap/dist')));
+app.use('/node_modules/@popperjs/core', express.static(path.join(__dirname, 'node_modules/@popperjs/core/dist/umd')));
+app.use('/node_modules/swiper', express.static(path.join(__dirname, 'node_modules/swiper')));
+
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
