@@ -2,6 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const imoveisRouter = require('./routes/properties');
+const dotenv = require('dotenv');
+
+// Carregar variáveis de ambiente do arquivo .env
+dotenv.config();
 
 const app = express();
 app.use(express.json());
